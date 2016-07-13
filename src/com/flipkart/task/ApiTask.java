@@ -1,5 +1,8 @@
 package com.flipkart.task;
 
+import com.flipkart.HttpHelper;
+import com.flipkart.Response;
+
 import java.util.concurrent.Callable;
 
 /**
@@ -7,4 +10,14 @@ import java.util.concurrent.Callable;
  */
 public abstract class ApiTask implements Callable {
 
+    private String url;
+
+    @Override
+    public Response call() throws Exception {
+        return HttpHelper.sendGet(url);
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

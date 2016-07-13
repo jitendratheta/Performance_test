@@ -1,7 +1,9 @@
 package com.flipkart;
 
 import com.flipkart.benchmark.PincodeDataBM;
+import com.flipkart.benchmark.ServiceabilityDataBM;
 import com.flipkart.task.PincodeData;
+import com.flipkart.task.ServiceabilityData;
 
 import java.util.Date;
 import java.util.concurrent.*;
@@ -17,14 +19,65 @@ public class Main {
 //    }
 
 
-    private static final ExecutorService threadpool = Executors.newFixedThreadPool(3);
-
     public static void main(String args[]) throws InterruptedException, ExecutionException {
         Data.initialize();
         PincodeData pincodeData = new PincodeData();
-        PincodeDataBM pincodeDataBM = new PincodeDataBM(10, pincodeData);
-        pincodeDataBM.run();
-        pincodeDataBM.getReport();
+
+//        pincodeDataBM = new PincodeDataBM(10, pincodeData);
+//        pincodeDataBM.run();
+//        pincodeDataBM.getReport();
+//        pincodeDataBM = new PincodeDataBM(20, pincodeData);
+//        pincodeDataBM.run();
+//        pincodeDataBM.getReport();
+//        pincodeDataBM = new PincodeDataBM(50, pincodeData);
+//        pincodeDataBM.run();
+//        pincodeDataBM.getReport();
+
+//        PincodeDataBM pincodeDataBM = new PincodeDataBM(2, pincodeData);
+//        pincodeDataBM.run();
+//        pincodeDataBM.getReport();
+//        pincodeDataBM = new PincodeDataBM(100, pincodeData);
+//        pincodeDataBM.run();
+//        pincodeDataBM.getReport();
+//        pincodeDataBM = new PincodeDataBM(200, pincodeData);
+//        pincodeDataBM.run();
+//        pincodeDataBM.getReport();
+//        PincodeDataBM pincodeDataBM = new PincodeDataBM(500, pincodeData);
+//        pincodeDataBM.run();
+//        pincodeDataBM.getReport();
+//        PincodeDataBM pincodeDataBM = new PincodeDataBM(1000, pincodeData);
+//        pincodeDataBM.run();
+//        pincodeDataBM.getReport();
+
+        ServiceabilityData serviceabilityData = new ServiceabilityData();
+        ServiceabilityDataBM serviceabilityDataBM  = new ServiceabilityDataBM(10, serviceabilityData);
+        serviceabilityDataBM.run();
+        serviceabilityDataBM.getReport();
+
+        serviceabilityDataBM  = new ServiceabilityDataBM(1000, serviceabilityData);
+        serviceabilityDataBM.run();
+        serviceabilityDataBM.getReport();
+
+        serviceabilityDataBM  = new ServiceabilityDataBM(20, serviceabilityData);
+        serviceabilityDataBM.run();
+        serviceabilityDataBM.getReport();
+
+        serviceabilityDataBM  = new ServiceabilityDataBM(50, serviceabilityData);
+        serviceabilityDataBM.run();
+        serviceabilityDataBM.getReport();
+
+        serviceabilityDataBM  = new ServiceabilityDataBM(100, serviceabilityData);
+        serviceabilityDataBM.run();
+        serviceabilityDataBM.getReport();
+
+        serviceabilityDataBM  = new ServiceabilityDataBM(200, serviceabilityData);
+        serviceabilityDataBM.run();
+        serviceabilityDataBM.getReport();
+
+        serviceabilityDataBM  = new ServiceabilityDataBM(500, serviceabilityData);
+        serviceabilityDataBM.run();
+        serviceabilityDataBM.getReport();
+
         return;
     }
 

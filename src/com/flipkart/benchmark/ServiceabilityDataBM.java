@@ -3,6 +3,7 @@ package com.flipkart.benchmark;
 import com.flipkart.Data;
 import com.flipkart.Response;
 import com.flipkart.task.PincodeData;
+import com.flipkart.task.ServiceabilityData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +13,16 @@ import java.util.concurrent.Future;
 /**
  * Created by jitendra.k on 13/07/16.
  */
-public class PincodeDataBM extends BenchMark  implements Runnable {
+public class ServiceabilityDataBM extends BenchMark  implements Runnable {
 
     protected static final String STAGE_URL = "http://ekart-flash-stage-0002.stage.nm.flipkart.com:21004/";
     protected static final String PROD_URL = "https://api.ekartflash.com/";
 
-    private PincodeData pincodeData;
+    private ServiceabilityData serviceabilityData;
 
-    public PincodeDataBM(long qps, PincodeData pincodeData) {
+    public ServiceabilityDataBM(long qps, ServiceabilityData serviceabilityData) {
         this.qps = qps;
-        this.pincodeData = pincodeData;
+        this.serviceabilityData = serviceabilityData;
         totalTime = 0L;
         failures = 0;
     }
@@ -33,8 +34,8 @@ public class PincodeDataBM extends BenchMark  implements Runnable {
             try {
                 Thread.sleep(1000 / qps);
                 //System.out.println("Submitting Task ...");
-                pincodeData.setUrl(PROD_URL + "api/v1/promiseengine/locations/560034/connection/" + Data.getRandPin() + "/service");
-                Future future = threadpool.submit(pincodeData);
+                serviceabilityData.setUrl(STAGE_URL + "api/v1/serviceability/" + Data.getRandPin() + "/pickup");
+                Future future = threadpool.submit(serviceabilityData);
                 //System.out.println("Task is submitted");
                 tasks.add(future);
             } catch (InterruptedException e) {
@@ -47,7 +48,7 @@ public class PincodeDataBM extends BenchMark  implements Runnable {
             try {
                 //System.out.println("getting response " + count++);
                 Response res = (Response) f.get();
-                System.out.println(res);
+                //System.out.println(res);
                 totalTime += res.getResponseTime();
                 if(res.getResponseCode() != 200)
                     ++failures;
@@ -58,4 +59,5 @@ public class PincodeDataBM extends BenchMark  implements Runnable {
             }
         }
     }
+
 }

@@ -6,6 +6,6 @@ import com.flipkart.Response;
 /**
  * Created by jitendra.k on 13/07/16.
  */
-public class PincodeData extends ApiTask {
+public class ServiceabilityData extends ApiTask {
 
 }
